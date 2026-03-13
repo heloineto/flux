@@ -16,6 +16,8 @@
 
 ## TypeScript
 
+- NEVER use "latest" in package.json. Use a specific version instead.
+
 ### Zod
 
 - BAD: `.nullable().optional()` GOOD: `.nullish()`
@@ -25,3 +27,4 @@
 ## This Project (Flux)
 
 - ALWAYS run `bun run check-types && bun run lint` after making changes
+- ALL ports on this project must be 7xxx
