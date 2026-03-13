@@ -1,0 +1,33 @@
+---
+title: Glossary
+description: Naming conventions and term definitions
+---
+
+# Flux - Glossary
+
+## Naming conventions
+
+Flux uses two naming layers intentionally:
+
+- **Internal** (code, routes, API, variables): uses `flow` / `flows`
+- **External** (marketing, landing page, user-facing copy): uses `agent` / `agents`
+
+Example: the API route is `/api/flows`, the frontend route is `/flows`, but the landing page says "Build AI agents".
+
+---
+
+## Terms
+
+| Term              | Layer    | Definition                                                                                                                                                                          |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Flow**          | Internal | An AI agent definition - the workflow graph that drives a conversation. Used in: API routes (`/flows`), frontend routes (`/flows`), code variables (`flow`, `flowId`, `createFlow`) |
+| **Agent**         | External | What flows are called in marketing and user-facing surfaces                                                                                                                         |
+| **Step**          | Internal | A single node within a flow (send message, ask question, branch, etc.)                                                                                                              |
+| **State**         | Internal | The current position of a contact within a flow                                                                                                                                     |
+| **Group**         | Internal | A collection of related states within a flow                                                                                                                                        |
+| **Contact**       | Both     | The end user interacting with the agent                                                                                                                                             |
+| **Attendant**     | Both     | The human operator who can take over a conversation from an agent                                                                                                                   |
+| **Human Handoff** | Both     | The act of transferring a conversation from the agent to a human attendant                                                                                                          |
+| **Command**       | Both     | A keyword the contact can send to interrupt the current flow and jump to another state                                                                                              |
+| **Conversation**  | Both     | A single thread between an agent and a contact on a specific channel                                                                                                                |
+| **Channel**       | Both     | The messaging platform the contact uses (WhatsApp, Telegram, Instagram, etc.)                                                                                                       |

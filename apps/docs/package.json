@@ -1,0 +1,63 @@
+{
+  "name": "flux-docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev -p 7051",
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "check-types": "tsc --noEmit",
+    "check-unused": "knip",
+    "check-spelling": "cspell .",
+    "check": "bun run check-types && bun run lint && bun run check-spelling"
+  },
+  "dependencies": {
+    "fumadocs-core": "latest",
+    "fumadocs-mdx": "latest",
+    "fumadocs-ui": "latest",
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^16.1.6",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^24.10.15",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "cspell": "^9.7.0",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "^16.1.6",
+    "knip": "^5.85.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3"
+  },
+  "cspell": {
+    "language": "en",
+    "ignorePaths": [
+      "node_modules",
+      ".next",
+      "*.tsbuildinfo",
+      ".source"
+    ],
+    "words": [
+      "frontmatter",
+      "fumadoc",
+      "fumadocs",
+      "mdx",
+      "nextjs",
+      "orama",
+      "supabase",
+      "tailwindcss",
+      "turborepo",
+      "vercel",
+      "xstate"
+    ]
+  }
+}
