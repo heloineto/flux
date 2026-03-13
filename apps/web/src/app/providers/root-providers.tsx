@@ -5,12 +5,12 @@ import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import type { ReactNode } from 'react';
 import { Notifications } from '@mantine/notifications';
-import { createQueryClient } from '@/packages/mantine';
-import { theme } from './theme';
+import { createQueryClient } from '@/shared/lib/mantine';
+import { theme } from '../styles/theme';
 
 const queryClient = createQueryClient();
 
-export function Providers({ children }: { children: ReactNode }) {
+export function RootProviders({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider defaultColorScheme="auto" theme={theme}>

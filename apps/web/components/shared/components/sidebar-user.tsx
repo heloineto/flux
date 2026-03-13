@@ -1,10 +1,10 @@
 'use client';
 
-import { SidebarUser as OriginalSidebarUser } from '@/packages/app-shell';
+import { SidebarUser as OriginalSidebarUser } from '@/shared/ui/app-shell';
 import { useAuth } from '../contexts/auth-context';
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@/shared/api/supabase/client';
 import { useRouter } from 'next/navigation';
-import { LOGIN_ROUTE } from '@/lib/constants';
+import { LOGIN_ROUTE } from '@/shared/config/constants';
 
 export function SidebarUser() {
   const { userQuery } = useAuth();

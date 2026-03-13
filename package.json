@@ -47,7 +47,8 @@
       "healthcheck",
       "isready",
       "postgres",
-      "postgresql"
+      "postgresql",
+      "supabase"
     ]
   }
 }

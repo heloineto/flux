@@ -1,0 +1,1 @@
+export { getPostHogServer } from './server';

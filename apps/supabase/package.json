@@ -1,0 +1,6 @@
+{
+  "name": "supabase",
+  "scripts": {
+    "dev": "supabase start"
+  }
+}

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const ConfigSchema = z.object({
-  PORT: z.coerce.number().default(4100),
+  PORT: z.coerce.number().default(7100),
   MODE: z.enum(['development', 'test', 'production']),
 
   POSTGRES_HOST: z.string().min(1),

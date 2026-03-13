@@ -1,4 +1,4 @@
-import { APP_DESCRIPTION, APP_NAME } from '@/lib/constants';
+import { APP_DESCRIPTION, APP_NAME } from '@/shared/config/constants';
 import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {

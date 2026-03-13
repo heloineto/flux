@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import type { Decorator, Preview } from '@storybook/nextjs-vite';
-import { theme } from '../app/theme';
+import { theme } from '../src/app/styles/theme';
 
 const withMantine: Decorator = (renderStory, context) => {
   const scheme = (context.globals['theme'] || 'light') as 'light' | 'dark';

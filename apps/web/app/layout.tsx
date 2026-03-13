@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import './globals.css';
-import { Providers } from './providers';
+import '@/app/styles/globals.css';
+import { RootProviders } from '@/app/providers';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import type { ReactNode } from 'react';
-import { geistMono, geistSans } from './fonts';
+import { geistMono, geistSans } from '@/app/styles/fonts';
 import {
   APP_DEFAULT_TITLE,
   APP_DESCRIPTION,
   APP_NAME,
   APP_TITLE_TEMPLATE,
   BASE_URL,
-} from '@/lib/constants';
+} from '@/shared/config/constants';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
@@ -67,7 +67,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <RootProviders>{children}</RootProviders>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export const onRequestError = async (
   _context: unknown
 ) => {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    const { getPostHogServer } = await import('./lib/posthog-server');
+    const { getPostHogServer } = await import('@/shared/lib/posthog/server');
     const posthog = getPostHogServer();
 
     if (!request.headers.get('cookie')) {

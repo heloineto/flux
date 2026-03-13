@@ -21,9 +21,13 @@ const eslintConfig = defineConfig([
     'node_modules/**',
     'supabase/**',
     'public/**',
+    'packages/**',
+    'components/**',
+    'lib/**',
+    'steiger.config.ts',
   ]),
   {
-    files: ['{app,components,lib,packages}/**/*.{ts,tsx}'],
+    files: ['{app,src}/**/*.{ts,tsx}'],
     rules: {
       '@next/next/no-img-element': 'off',
       'no-console': ['error', { allow: ['warn', 'error'] }],
@@ -35,7 +39,7 @@ const eslintConfig = defineConfig([
     },
     settings: {
       'better-tailwindcss': {
-        entryPoint: resolve(__dirname, 'app/globals.css'),
+        entryPoint: resolve(__dirname, 'src/app/styles/globals.css'),
       },
     },
     rules: {
