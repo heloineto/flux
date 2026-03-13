@@ -1,0 +1,41 @@
+.metaPlaceholder {
+  visibility: hidden;
+  display: inline-flex;
+  padding-left: 6px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+}
+
+.meta,
+.metaPlaceholder {
+  gap: 3px;
+}
+
+.time {
+  color: var(--message-meta);
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.receipt {
+  @mixin where-light {
+    color: #8696a0;
+  }
+
+  @mixin where-dark {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &[data-status='read'] {
+    color: #53bdeb;
+  }
+}
+
+.receipt,
+.receiptPlaceholder {
+  height: 15px;
+  width: 15px;
+}

@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+
+  &[data-position='right'] {
+    align-items: flex-end;
+
+    .root {
+      border-top-right-radius: 0px;
+    }
+
+    .tail {
+      right: -8px;
+    }
+  }
+
+  &[data-position='left'] {
+    align-items: flex-start;
+
+    .root {
+      border-top-left-radius: 0px;
+    }
+
+    .tail {
+      left: -8px;
+    }
+  }
+
+  &[data-direction='sent'] {
+    --background: var(--sent-background);
+  }
+
+  &[data-direction='received'] {
+    --background: var(--received-background);
+  }
+}
+
+.container[data-direction='sent'] + .container[data-direction='sent'],
+.container[data-direction='received'] + .container[data-direction='received'] {
+  .root {
+    border-top-right-radius: var(--bubble-radius);
+    border-top-left-radius: var(--bubble-radius);
+  }
+
+  .tail {
+    display: none;
+  }
+}
+
+.container[data-direction='sent']:has(+ .container[data-direction='sent']),
+.container[data-direction='received']:has(
+    + .container[data-direction='received']
+  ) {
+  margin-bottom: 0.125rem;
+}
+
+.root {
+  background-color: var(--background);
+  border-radius: var(--bubble-radius);
+  color: var(--message-text);
+  flex: none;
+  font-size: 14.2px;
+  line-height: 19px;
+  max-width: clamp(0px, 550px, 80%);
+  position: relative;
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.08);
+}
+
+.tail {
+  color: var(--background);
+  position: absolute;
+  top: 0;
+}

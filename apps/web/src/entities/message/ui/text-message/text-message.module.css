@@ -1,0 +1,21 @@
+.bubble {
+  white-space: pre-wrap;
+  padding-bottom: 8px;
+  padding-top: 6px;
+
+  &[data-position='right'] {
+    padding-left: var(--bubble-padding-start);
+    padding-right: var(--bubble-padding-end);
+  }
+
+  &[data-position='left'] {
+    padding-right: var(--bubble-padding-start);
+    padding-left: var(--bubble-padding-end);
+  }
+}
+
+.meta {
+  position: absolute;
+  right: 6px;
+  bottom: 3px;
+}

@@ -1,0 +1,46 @@
+.richText {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.quote {
+  border-left: 2px solid var(--mantine-color-gray-5);
+  padding-left: 8px;
+  margin-left: 0;
+  font-style: italic;
+}
+
+.bulletItem {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.numberedItem {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+.inlineCode {
+  background-color: var(--mantine-color-gray-1);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.multilineCode {
+  display: block;
+  background-color: var(--mantine-color-gray-1);
+  padding: 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.link {
+  color: var(--mantine-color-blue-6);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

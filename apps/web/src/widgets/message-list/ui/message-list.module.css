@@ -1,0 +1,73 @@
+.root {
+  --bubble-radius: 7.5px;
+
+  --bubble-padding-start: 9px;
+  --bubble-padding-end: 7px;
+
+  --message-meta-light: #667781;
+  --message-meta-dark: rgba(255, 255, 255, 0.6);
+
+  @mixin where-light {
+    --sent-background: #d9fdd3;
+    --received-background: #fff;
+    --sent-border-color: rgba(17, 27, 33, 0.06);
+    --received-border-color: rgba(17, 27, 33, 0.06);
+    --message-text: #111b21;
+    --message-meta: var(--message-meta-light);
+  }
+
+  @mixin where-dark {
+    --sent-background: #005c4b;
+    --received-background: #202c33;
+    --sent-border-color: rgba(233, 237, 239, 0.12);
+    --received-border-color: rgba(233, 237, 239, 0.12);
+    --message-text: #e9edef;
+    --message-meta: var(--message-meta-dark);
+  }
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @mixin where-light {
+    background-color: #efeae2;
+  }
+
+  @mixin where-dark {
+    background-color: #0b141a;
+  }
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/background.png');
+  opacity: 0.06;
+
+  @mixin where-light {
+    opacity: 0.6;
+  }
+
+  @mixin where-dark {
+    opacity: 0.06;
+  }
+}
+
+.scrollThumb {
+  @mixin where-light {
+    background-color: rgba(0, 0, 0, 0.125);
+  }
+
+  @mixin where-dark {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+  min-height: 12px;
+}

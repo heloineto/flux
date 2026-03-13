@@ -1,0 +1,62 @@
+.root {
+  --message-reply-color: rgba(255, 255, 255, 0.6);
+  --preview-width: 58px;
+  --decoration-width: 4px;
+
+  display: flex;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #025144;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  text-align: left;
+  position: relative;
+}
+
+.container {
+  padding: 4px calc(12px + var(--preview-width)) 8px
+    calc(4px + var(--decoration-width));
+}
+
+.messageContainer {
+  font-size: 13.2px;
+  line-height: 20px;
+  max-height: 60px;
+  min-height: 42px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  color: var(--message-reply-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--decoration-width);
+  background-color: #06cf9c;
+}
+
+.sender {
+  display: inline-flex;
+  color: #06cf9c;
+  max-width: 100%;
+  font-size: 12.8px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: var(--preview-width);
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+}
+
+.bubble {
+  padding: 3px;
+  max-width: 336px;
+}
+
+.meta {
+  --message-meta: var(--message-meta-dark);
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 3px 5px;
+
+  background-image: linear-gradient(
+    to top,
+    rgba(11, 20, 26, 0.5),
+    rgba(11, 20, 26, 0)
+  );
+}

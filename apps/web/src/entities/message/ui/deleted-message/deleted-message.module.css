@@ -1,0 +1,39 @@
+.bubble {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  padding-top: 6px;
+  gap: 4px;
+
+  @mixin where-light {
+    color: var(--mantine-color-gray-7);
+  }
+
+  @mixin where-dark {
+    color: var(--mantine-color-dark-1);
+  }
+
+  &[data-position='right'] {
+    padding-left: var(--bubble-padding-start);
+    padding-right: var(--bubble-padding-end);
+  }
+
+  &[data-position='left'] {
+    padding-right: var(--bubble-padding-start);
+    padding-left: var(--bubble-padding-end);
+  }
+}
+
+.icon {
+  font-size: 1.25rem;
+}
+
+.text {
+  font-style: italic;
+}
+
+.meta {
+  position: absolute;
+  bottom: 3px;
+  right: 6px;
+}
