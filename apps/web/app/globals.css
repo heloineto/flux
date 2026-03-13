@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import '../packages/ag-grid/styles.css';
+@import 'tailwind-preset-mantine';
+
+.container {
+  @apply px-4 w-full mx-auto xs:max-w-[650px] sm:max-w-[750px] md:max-w-[1050px] lg:max-w-[1150px] xl:max-w-[1240px];
+}
+
+@layer base {
+  * {
+    @apply border-default-border;
+  }
+
+  body {
+    @apply bg-body text-text;
+  }
+}

@@ -1,0 +1,255 @@
+# Project Structure
+
+## Hexagonal Architecture
+
+You know the feeling - a "small" change to how data is stored cascades into controllers, services, tests, DTOs. Business logic leaks into HTTP handlers. A feature that should take an hour takes a day, because everything is tangled with everything else.
+
+Hexagonal architecture (aka. ports & adapters) solves that. The **core domain owns the contracts** - it defines interfaces (ports) describing what it needs. Infrastructure and transports implement those contracts (adapters). Arrows point inward, not outward (or all over the place).
+
+**What you gain:**
+
+- **Swap infrastructure freely** - replace Postgres with Mongo, REST with gRPC, without touching a line of business logic
+- **Test business logic in isolation** - no DB, no HTTP, no mocks of external systems; just pure functions and interfaces
+- **Focus on what matters** - domain and application layers stay clean and expressive, free from framework noise
+- **Resilience to change** - external systems evolve; your core doesn't have to
+
+The upfront structure pays off fast - business logic stays clean and readable for years, and the codebase grows without becoming a pile of tech debt.
+
+## Folder Structure
+
+Code is organized by **feature** (bounded context), not by technical role. Everything related to a feature lives together.
+
+```
+/src
+├── /common                     # Shared code, organized by layer (see below)
+├── /core                       # Global infrastructure bootstrap (connections, providers)
+└── /<feature>                  # One folder per bounded context
+    ├── <feature>.module.ts     # Composition root - wires all layers together
+    ├── /application            # Use cases, commands, ports
+    ├── /domain                 # Models, value objects, events, factories
+    ├── /infrastructure         # Adapters implementing the ports
+    └── /presentation           # Delivery layer - how the outside world talks to the app
+```
+
+## /common
+
+Cross-feature shared code, split by layer to keep dependency rules enforceable:
+
+```
+/common
+├── /application
+│   └── /ports               # Shared ports (e.g. ApplicationConfig)
+├── /infrastructure
+│   ├── /config              # Env loading, validation, typed access
+│   ├── /transformers        # TypeORM column transformers
+│   └── /utils               # Shared query utilities
+└── /presentation            # NestJS/HTTP shared wiring (filters)
+```
+
+### Configuration
+
+Configuration follows the same ports-and-adapters.
+
+```
+/common
+├── /application/ports/application-config.port.ts     # Port - what the app layer needs
+└── /infrastructure/config
+    ├── application-config.service.ts          # Implements ApplicationConfig port
+    ├── config.module.ts                       # @Global - import once in CoreModule
+    ├── config.service.ts                      # Typed accessor over @nestjs/config
+    └── config.type.ts                         # Config type definition + validation
+```
+
+- **`ConfigService`** - infrastructure only. Full access to all env vars. Never import in application layer.
+- **`ApplicationConfig`** - port. Only what use cases need. Add methods as use cases require them.
+
+## /application
+
+Orchestrates use cases. Each use case is a single class in its own file, which also exports its input DTO. Never depends on infrastructure or presentation details. Instead, it defines **ports** that describe what it needs, and expects the infrastructure layer to fulfill them.
+
+```
+/application
+├── /use-cases    # One file per use case. Each file exports the use case class and its input DTO
+├── /ports        # Abstractions over external dependencies (repositories, brokers, etc.)
+└── /dtos         # Shared DTOs/schemas reused across multiple use cases
+```
+
+### Use cases
+
+A use case is one thing the system can do - a single, named operation from the user's perspective (`FindApoiadores`, `CreateEmenda`, `RemoveApoiador`). It receives input, calls ports, and returns output. No HTTP, no SQL, no framework noise.
+
+**Use cases must never import from other use case files.** If a schema or DTO is needed by more than one use case, extract it to `/application/dtos` and import from there.
+
+### Ports
+
+Ports are defined as **abstract classes**, not interfaces. In NestJS, interfaces are erased at compile time and can't serve as injection tokens. Abstract classes survive compilation and work as DI tokens at runtime.
+
+```ts
+export abstract class AlarmRepository {
+  abstract findAll(): Promise<Alarm[]>;
+  abstract save(alarm: Alarm): Promise<Alarm>;
+}
+```
+
+## /domain
+
+The purest layer - no frameworks, no HTTP, no database. Directly maps to the DDD tactical building blocks:
+
+- **Entities** - domain models with identity and lifecycle
+- **Value Objects** - immutable, equality by attributes (e.g. `AlarmSeverity`)
+- **Aggregates** - clusters enforcing consistency boundaries
+- **Factories** - encapsulate complex object creation
+- **Domain Events** - record meaningful things that happened in the domain
+
+This layer encodes business rules that never change regardless of how the app is delivered or where data is stored.
+
+## /infrastructure
+
+Implements the ports via **adapters**. Multiple adapters can implement the same port - for example, one backed by a real database and one in-memory for local dev or testing. Each adapter is self-contained with its own entities, repositories, and mappers.
+
+Below is an example using driver `orm` and `in-memory`:
+
+```
+/infrastructure
+├── <feature>-infrastructure.module.ts       # Ties all persistence modules together
+├── /persistence
+│   ├── /orm
+│   │   ├── /entities                        # orm-<feature>.entity.ts
+│   │   ├── /repositories                    # orm-<feature>.repository.ts
+│   │   ├── /mappers                         # orm-<feature>.mapper.ts
+│   │   └── orm-persistence.module.ts
+│   └── /in-memory
+│       ├── /entities                        # in-memory-<feature>.entity.ts
+│       ├── /repositories                    # in-memory-<feature>.repository.ts
+│       ├── /mappers                         # in-memory-<feature>.mapper.ts
+│       └── in-memory-persistence.module.ts
+└── /<adapter>                               # Non-persistence adapters (e.g. supabase, stripe)
+    ├── <adapter>.module.ts
+    └── <adapter>-<name>.ts
+```
+
+Each driver owns a NestJS module that registers its entities and binds the port to the adapter. The feature module imports this persistence module - **never `TypeOrmModule.forFeature` directly in the feature module**.
+
+Non-persistence adapters (auth providers, external APIs, message brokers) live in their own folder under `/infrastructure`, separate from `/persistence`.
+
+### Mappers
+
+Each adapter owns a mapper that converts between its persistence model and the domain model.
+
+```ts
+class OrmAlarmMapper {
+  static toDomain(entity: OrmAlarmEntity): Alarm { ... }
+  static toPersistence(alarm: Alarm): OrmAlarmEntity { ... }
+}
+```
+
+Read-only adapters only need `toDomain`. Skip `toPersistence` if the feature never writes through that adapter.
+
+**`toDomain`:** Prefer `return entity` when ORM matches domain; TypeScript enforces return type (mismatches = compile errors). Map field-by-field only when domain diverges (renamed/computed/transformed fields).
+
+### Implementing ports
+
+Adapters: `implements` port, never `extends`. Avoids super() and coupling; abstract class still works as DI token.
+
+```ts
+@Injectable()
+export class OrmAlarmRepository implements AlarmRepository {
+  constructor(...) {}
+  // ...
+}
+```
+
+### Swapping adapters
+
+All adapters implementing the same port export the same token. The application layer never knows which one it received - swapping infrastructure requires no domain or application code changes.
+
+## /presentation
+
+The delivery layer - how the outside world talks to the application. Organized by transport. Each transport folder contains controllers and transport-specific wiring. DTOs live in the use-case files they belong to, not here.
+
+```
+/presentation
+└── /<transport>                             # e.g. http, cli
+    ├── <name>.controller.ts
+    ├── <name>.controller.spec.ts
+    ├── /guards                              # Route guards
+    ├── /constants                           # Constants
+    └── /decorators                          # Custom parameter/route decorators
+```
+
+### /http
+
+REST controllers and HTTP-specific error handling. Controllers call use cases directly and pass the request body as the use-case DTO.
+
+### /cli
+
+CLI commands and argument parsing. Same application layer underneath, different entry point. Useful for scripts, migrations, or admin tasks that share the same use cases as the HTTP layer.
+
+## /feature.module.ts
+
+`<feature>.module.ts` at feature root, above layers (intentional). **Composition root**: wires providers from all layers via Nest DI. Couples app + infra + presentation by design. Pragmatic compromise: pure hexagonal architecture would avoid one-file cross-layer coupling; Nest needs it. Root placement = visible, predictable, layers stay clean.
+
+## DDD (Domain-Driven Design)
+
+DDD is a software development approach that concentrates on the domain model and domain logic. The structure and language of the code should match that of the business domain.
+
+#### Entities
+
+Objects with a **unique identifier** and a lifecycle. They can be modified over time, but their identity persists. Two entities with identical attributes are still different entities - for example, two alarms with the same name and severity are distinct alarms.
+
+#### Value Objects
+
+**Immutable** objects with no unique identifier. Equality is determined entirely by their attributes - two value objects with the same attributes are considered equal. In this codebase, `AlarmSeverity` is a value object.
+
+#### Aggregates
+
+A **cluster of objects** treated as a single unit, with one root entity (the aggregate root). The aggregate enforces that all objects within it remain in a valid and consistent state. It represents a **transactional consistency boundary** - all changes to objects inside the aggregate happen within a single transaction.
+
+#### Repositories
+
+Abstractions over the data access layer, used to **persist and retrieve aggregates**. The application layer works with aggregates through repository interfaces (ports) without any knowledge of the underlying storage implementation. This codebase already uses this pattern for alarms.
+
+#### Services
+
+Encapsulate **domain logic that doesn't belong to any specific entity or value object** - for example, a notification service triggered when a new alarm is created. Use sparingly: heavy reliance on services is a warning sign of an **anemic domain model** - an anti-pattern where the domain model contains no real business logic and is reduced to getters and setters.
+
+#### Factories
+
+Encapsulate the **creation of complex objects**, especially when construction involves validation, initialization, or multiple coordinated steps. Factories keep domain objects clean and focused on business logic by offloading creation complexity to dedicated classes.
+
+#### Domain Events
+
+Capture **domain-specific information about something that happened** in the past - a state change or action in the domain model. Events enable loose coupling, scalability, and eventual consistency. There are two types:
+
+- **Domain Events** - internal to the bounded context, used to react to changes within the same domain
+- **Integration Events** - cross-boundary events, used to communicate between bounded contexts or external systems
+
+## Barrel Files
+
+**No barrel files inside features.** Use direct imports with `@/` path aliases.
+
+**Why not full barrel files?** The costs outweigh the benefits: extra `index.ts` files in every folder, hidden public APIs (`export *` hides what's actually exported), and worse IDE navigation ("go to definition" lands in the barrel instead of the source). Linting, testing and bundling might also be less performant.
+
+## ESLint Boundaries
+
+`eslint-plugin-boundaries` enforces import rules.
+
+| Layer            | Allowed imports                         |
+| ---------------- | --------------------------------------- |
+| `domain`         | `domain`                                |
+| `application`    | `domain`,`application`                  |
+| `infrastructure` | `domain`,`application`,`infrastructure` |
+| `presentation`   | `domain`,`application`,`presentation`   |
+
+No cross-feature imports. Features compose via app module.
+
+## Testing
+
+```
+/<feature>
+├── /test
+│   └── <feature>.mock.ts         # Factory for building domain objects in tests
+└── /use-cases
+    ├── <name>.use-case.ts
+    └── <name>.use-case.spec.ts   # Use case unit tests. co-located.
+```

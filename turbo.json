@@ -23,6 +23,15 @@
     "check-types": {
       "dependsOn": ["^build", "^check-types"]
     },
+    "check-unused": {
+      "dependsOn": []
+    },
+    "check-spelling": {
+      "dependsOn": []
+    },
+    "check": {
+      "dependsOn": []
+    },
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,
