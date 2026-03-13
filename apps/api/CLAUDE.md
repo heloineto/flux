@@ -12,6 +12,8 @@
   - Extract nested blocks into separate functions
 - NEVER use single-character variable names. BAD: `i` GOOD: `index`
 
+## TypeScript
+
 ### Zod
 
 - BAD: `.nullable().optional()` GOOD: `.nullish()`

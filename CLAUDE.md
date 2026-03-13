@@ -14,8 +14,14 @@
 - NEVER use single-character variable names. BAD: `i` GOOD: `index`
 - NEVER do ugly/nested ternaries. Use if/else or extract to a function. BAD: a ? b ? c : d : e GOOD: if/else blocks
 
+## TypeScript
+
 ### Zod
 
 - BAD: `.nullable().optional()` GOOD: `.nullish()`
 - BAD: `.strict()` GOOD: `.strictObject()`
 - BAD: `.passthrough()` GOOD: `.looseObject()`
+
+## This Project (Flux)
+
+- ALWAYS run `bun run check-types && bun run lint` after making changes
