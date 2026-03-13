@@ -48,7 +48,9 @@
       "isready",
       "postgres",
       "postgresql",
-      "supabase"
+      "rehydratable",
+      "supabase",
+      "turborepo"
     ]
   }
 }

@@ -1,0 +1,75 @@
+# Flux - Technology Specification
+
+## Monorepo & Tooling
+
+- **Runtime/Package manager:** Bun
+- **Monorepo:** Turborepo
+- **Language:** TypeScript 5
+- **Validation:** Zod 4
+
+---
+
+## Frontend (`apps/web`)
+
+- **Framework:** Next.js 16 + React 19
+- **UI library:** Mantine 8
+- **Styling:** TailwindCSS 4
+- **State/data fetching:** TanStack Query 5
+- **Forms:** React Hook Form + Zod
+- **API client:** Orval (auto-generated from OpenAPI spec)
+- **Auth client:** Supabase JS (auth only)
+- **Bot flow editor:** React Flow (drag-and-drop node canvas)
+- **Bot editor state:** XState v5 actors (serializable, rehydratable)
+
+---
+
+## Backend (`apps/api`)
+
+- **Framework:** NestJS 11
+- **Architecture:** Hexagonal (ports & adapters)
+- **ORM:** TypeORM + PostgreSQL
+- **Auth:** Supabase (auth only - JWT verification, user management)
+- **API docs:** Swagger + Scalar
+
+---
+
+## Bot Engine
+
+- **State machine:** XState v5
+  - Bot definitions compiled to `createMachine(config)` at runtime
+  - Named action implementations injected via `implementations` map (e.g. `sendWebhook`, `callLLM`, `queryDatabase`)
+  - Actor snapshots: `actor.getPersistedSnapshot()` / `createActor(machine, { snapshot })`
+- **AI nodes:** XState `invoke` (async Promise) for LLM calls via Vercel AI SDK
+- **Channel delivery:** Vercel AI SDK Chat (multi-platform: WhatsApp, Telegram, Slack, etc.)
+
+### Message lifecycle per incoming event
+
+1. Message arrives via Chat SDK webhook
+2. Fetch actor snapshot from Redis by `conversationId`
+3. `createActor(machine, { snapshot })` to rehydrate
+4. `actor.send({ type: 'MESSAGE', text })` to transition
+5. React to new state - send reply via Chat SDK thread
+6. `actor.getPersistedSnapshot()` - persist back to Redis
+
+---
+
+## Data Stores
+
+| Store                     | What it holds                                                  |
+| ------------------------- | -------------------------------------------------------------- |
+| **PostgreSQL**            | Bot definitions (machine configs), user data, org data         |
+| **Redis**                 | XState actor snapshots per conversation, Chat SDK thread state |
+
+---
+
+## Editor Node Palette (block vocabulary)
+
+Abstracted over XState internals, compiled down to XState config:
+
+- **Send message** - emits text/media to user
+- **Ask question** - waits for user reply, stores in context
+- **Branch** - conditional transition based on context/expression
+- **AI response** - `invoke` state calling LLM, transitions on result
+- **Webhook** - HTTP call with request/response mapping
+- **Set variable** - assigns value to actor context
+- **Jump** - goto another state/flow
