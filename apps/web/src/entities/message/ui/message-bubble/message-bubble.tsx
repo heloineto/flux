@@ -5,8 +5,10 @@ import classes from './message-bubble.module.css';
 import { TailLeft } from './components/tail-left';
 import { TailRight } from './components/tail-right';
 
-export interface MessageBubbleProps
-  extends Pick<MessageProps, 'direction' | 'position'> {
+export interface MessageBubbleProps extends Pick<
+  MessageProps,
+  'direction' | 'position'
+> {
   children: ReactNode;
   className?: string;
   classNames?: {

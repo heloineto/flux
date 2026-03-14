@@ -10,7 +10,12 @@ import {
   useNodesState,
   useReactFlow,
 } from '@xyflow/react';
-import type { Connection, Edge, FinalConnectionState, Node } from '@xyflow/react';
+import type {
+  Connection,
+  Edge,
+  FinalConnectionState,
+  Node,
+} from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
@@ -39,7 +44,7 @@ function FlowCanvasInner() {
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((prev) => addEdge(params, prev)),
-    [setEdges],
+    [setEdges]
   );
 
   const onConnectEnd = useCallback(
@@ -48,18 +53,26 @@ function FlowCanvasInner() {
 
       const id = getNextId();
       const touch = 'changedTouches' in event ? event.changedTouches[0] : event;
-      const position = screenToFlowPosition({ x: touch.clientX, y: touch.clientY });
+      const position = screenToFlowPosition({
+        x: touch.clientX,
+        y: touch.clientY,
+      });
 
       setNodes((prev) => [
         ...prev,
-        { id, position, data: { label: `Node ${id}` }, origin: [0.5, 0] as [number, number] },
+        {
+          id,
+          position,
+          data: { label: `Node ${id}` },
+          origin: [0.5, 0] as [number, number],
+        },
       ]);
       setEdges((prev) => [
         ...prev,
         { id, source: connectionState.fromNode!.id, target: id },
       ]);
     },
-    [screenToFlowPosition, setNodes, setEdges],
+    [screenToFlowPosition, setNodes, setEdges]
   );
 
   return (

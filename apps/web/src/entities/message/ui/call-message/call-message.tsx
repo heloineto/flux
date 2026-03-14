@@ -25,7 +25,7 @@ const callConfig = {
 
 function renderCallIcon(
   type: 'video' | 'audio',
-  direction: MessageDirection,
+  direction: MessageDirection
 ): JSX.Element {
   if (type === 'video' && direction === 'sent')
     return <VideoOutgoing weight="fill" />;

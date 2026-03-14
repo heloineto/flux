@@ -1,3 +1,5 @@
+'use client';
+
 import type { AppShellAsideProps, DrawerProps } from '@mantine/core';
 import {
   Drawer,

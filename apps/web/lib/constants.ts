@@ -7,7 +7,7 @@ export const BASE_URL = 'https://www.flux.com.br/';
 export const LANDING_PAGE_ROUTE = '/';
 export const LOGIN_ROUTE = '/login';
 export const PUBLIC_ROUTES = [LOGIN_ROUTE, LANDING_PAGE_ROUTE];
-export const DEFAULT_ROUTE = '/agents';
+export const DEFAULT_ROUTE = '/flows';
 
 export const HEADER_HEIGHT = 48;
 export const MAX_DROPDOWN_HEIGHT = 'min(400px,40vh)';

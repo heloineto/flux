@@ -1,5 +1,5 @@
 import type { Icon } from '@phosphor-icons/react';
-import { RobotIcon } from '@phosphor-icons/react/dist/ssr';
+import { RobotIcon, ShareNetworkIcon } from '@phosphor-icons/react/dist/ssr';
 
 export type Route = {
   label: string;
@@ -11,6 +11,11 @@ export type Route = {
 };
 
 export const routes = {
+  FLOWS: {
+    label: 'Flows',
+    href: '/flows',
+    icon: ShareNetworkIcon,
+  },
   AGENTS: {
     label: 'Agents',
     href: '/agents',

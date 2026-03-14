@@ -22,7 +22,7 @@ const SidebarItem = createPolymorphicComponent<'a', SidebarItemProps>(
 
     if (typeof activeProp === 'function') {
       const href = 'href' in props ? (props.href as string) : undefined;
-      active = activeProp(pathname, href);
+      active = activeProp(pathname ?? '', href);
     } else if (typeof activeProp === 'boolean') {
       active = activeProp;
     } else {
