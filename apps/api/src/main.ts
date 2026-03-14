@@ -11,9 +11,10 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const port = configService.get('PORT');
   const webUrl = configService.get('WEB_URL');
+  const docsUrl = configService.get('DOCS_URL');
 
   app.enableCors({
-    origin: webUrl,
+    origin: [webUrl, docsUrl],
     credentials: true,
   });
 

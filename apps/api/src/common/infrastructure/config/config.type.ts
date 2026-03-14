@@ -11,6 +11,7 @@ export const ConfigSchema = z.object({
   POSTGRES_DATABASE: z.string().min(1),
 
   WEB_URL: z.url(),
+  DOCS_URL: z.url(),
 
   SUPABASE_URL: z.url(),
   SUPABASE_PUBLISHABLE_KEY: z.string().min(1),
