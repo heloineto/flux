@@ -11,10 +11,10 @@ import {
 } from '@mantine/core';
 import { ColorSchemeMenuItems } from './color-scheme-menu-items';
 import classes from './sidebar-user.module.css';
-import type { Query } from '@/shared/ui/states';
-import { AvatarError, AvatarLoading, QueryBoundary } from '@/shared/ui/states';
+import type { Query } from '@packages/states';
+import { AvatarError, AvatarLoading, QueryBoundary } from '@packages/states';
 import { SignOutMenuItem } from './sign-out-menu-item';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@packages/utils';
 
 export interface SidebarUserProps {
   opened?: boolean;

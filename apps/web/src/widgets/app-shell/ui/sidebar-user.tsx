@@ -1,6 +1,6 @@
 'use client';
 
-import { SidebarUser as OriginalSidebarUser } from '@/shared/ui/app-shell';
+import { SidebarUser as OriginalSidebarUser } from '@packages/app-shell';
 import { useAuth } from '@/shared/auth/context';
 import { createClient } from '@/shared/api/supabase/client';
 import { useRouter } from 'next/navigation';

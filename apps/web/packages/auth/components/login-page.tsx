@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import type { ComponentProps, FormEvent, ReactNode } from 'react';
 import { useState } from 'react';
 import { Button, PasswordInput, TextInput, Title } from '@mantine/core';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@packages/utils';
 import Image from 'next/image';
 
 export function LoginPage({

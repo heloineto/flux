@@ -3,8 +3,8 @@ import {
   type UseControllerProps,
   useController,
 } from 'react-hook-form';
-import type { CurrencyInputProps as $CurrencyInputProps } from '@/shared/lib/mantine';
-import { CurrencyInput as $CurrencyInput } from '@/shared/lib/mantine';
+import type { CurrencyInputProps as $CurrencyInputProps } from '@packages/mantine';
+import { CurrencyInput as $CurrencyInput } from '@packages/mantine';
 
 export type CurrencyInputProps<T extends FieldValues> = UseControllerProps<T> &
   Omit<$CurrencyInputProps, 'value' | 'onChange'> & {

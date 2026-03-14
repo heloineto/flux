@@ -5,8 +5,8 @@ import { useController } from 'react-hook-form';
 import type {
   ServerSideSelectProps as $ServerSideSelectProps,
   ServerSideSelectType,
-} from '@/shared/ui/combobox-select';
-import { ServerSideSelect as $ServerSideSelect } from '@/shared/ui/combobox-select';
+} from '@packages/combobox-select';
+import { ServerSideSelect as $ServerSideSelect } from '@packages/combobox-select';
 
 export type ServerSideSelectProps<
   TFieldValues extends FieldValues = FieldValues,

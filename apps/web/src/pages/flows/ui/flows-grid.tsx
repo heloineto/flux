@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { EmptyState } from '@/shared/ui/states';
+import { EmptyState } from '@packages/states';
 import { CreateFlowCard } from './create-flow-card';
 import { FlowCard } from './flow-card';
 import { FlowsSearch } from './flows-search';

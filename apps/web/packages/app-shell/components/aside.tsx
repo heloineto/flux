@@ -1,13 +1,14 @@
+'use client';
 import type { AppShellAsideProps, DrawerProps } from '@mantine/core';
 import {
   Drawer,
   AppShellAside as MantineAppShellAside,
   useMatches,
 } from '@mantine/core';
-import type { Disclosure } from '@/shared/lib/mantine';
+import type { Disclosure } from '@packages/mantine';
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useDisclosure } from '@/shared/lib/mantine';
+import { useDisclosure } from '@packages/mantine';
 
 export interface AsideProps {
   children: ReactNode;

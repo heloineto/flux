@@ -1,6 +1,7 @@
 {
   "name": "supabase",
   "scripts": {
-    "dev": "supabase start"
+    "dev": "supabase start",
+    "clean": "rimraf node_modules"
   }
 }

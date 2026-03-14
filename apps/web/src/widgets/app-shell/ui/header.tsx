@@ -1,6 +1,6 @@
 import { SIDEBAR_BREAKPOINT } from './sidebar';
 import { ASIDE_BREAKPOINT } from './aside';
-import { Header as OriginalHeader } from '@/shared/ui/app-shell';
+import { Header as OriginalHeader } from '@packages/app-shell';
 import Link from 'next/link';
 
 export function Header() {

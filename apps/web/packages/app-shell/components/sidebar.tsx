@@ -4,9 +4,9 @@ import type { CSSProperties, ComponentProps, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 import { useUncontrolled } from '@mantine/hooks';
 import classes from './sidebar.module.css';
-import { cn } from '@/shared/lib/utils';
-import type { Disclosure } from '@/shared/lib/mantine';
-import { useDisclosure } from '@/shared/lib/mantine';
+import { cn } from '@packages/utils';
+import type { Disclosure } from '@packages/mantine';
+import { useDisclosure } from '@packages/mantine';
 import { Drawer, useMatches } from '@mantine/core';
 
 const DEFAULT_SIDEBAR_COLLAPSED_WIDTH = '3.25rem';

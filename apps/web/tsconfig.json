@@ -17,7 +17,8 @@
     "types": ["@serwist/next/typings", "bun"],
     "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@packages/*": ["./packages/*"]
     }
   },
   "include": [
@@ -29,12 +30,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "public/sw.js",
-    "supabase",
-    "packages",
-    "components",
-    "lib"
-  ]
+  "exclude": ["node_modules", "public/sw.js"]
 }

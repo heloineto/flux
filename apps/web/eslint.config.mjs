@@ -25,6 +25,7 @@ const eslintConfig = defineConfig([
     'components/**',
     'lib/**',
     'steiger.config.ts',
+    'src/shared/api/orval/**',
   ]),
   {
     files: ['{app,src}/**/*.{ts,tsx}'],

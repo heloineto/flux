@@ -1,6 +1,6 @@
 import { Skeleton } from '@mantine/core';
 import classes from './sidebar.module.css';
-import { AvatarLoading } from '@/shared/ui/states';
+import { AvatarLoading } from '@packages/states';
 
 export function SidebarUserLoading() {
   return (

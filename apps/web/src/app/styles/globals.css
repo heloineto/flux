@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import '../../shared/ui/ag-grid/styles.css';
 @import 'tailwind-preset-mantine';
 
 .container {

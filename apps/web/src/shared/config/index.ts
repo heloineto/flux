@@ -9,7 +9,6 @@ export {
   PUBLIC_ROUTES,
   DEFAULT_ROUTE,
   HEADER_HEIGHT,
-  MAX_DROPDOWN_HEIGHT,
 } from './constants';
 
 export { routes, type Route } from './routes';

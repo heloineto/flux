@@ -2,7 +2,7 @@
 
 import { SidebarUser } from './sidebar-user';
 import Link from 'next/link';
-import { Sidebar as OriginalSidebar, SidebarItem } from '@/shared/ui/app-shell';
+import { Sidebar as OriginalSidebar, SidebarItem } from '@packages/app-shell';
 import { useRoutes } from '@/shared/config';
 
 export const SIDEBAR_COLLAPSED_WIDTH = '3.25rem';

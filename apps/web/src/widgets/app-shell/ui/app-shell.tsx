@@ -9,7 +9,7 @@ import {
 } from '@mantine/core';
 import { SIDEBAR_BREAKPOINT, SIDEBAR_EXPANDED_WIDTH, Sidebar } from './sidebar';
 import { ASIDE_BREAKPOINT, ASIDE_WIDTH } from './aside';
-import { useAside } from '@/shared/ui/app-shell';
+import { useAside } from '@packages/app-shell';
 import { HEADER_HEIGHT } from '@/shared/config/constants';
 import { Header } from './header';
 
