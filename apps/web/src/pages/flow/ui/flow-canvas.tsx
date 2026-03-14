@@ -11,11 +11,13 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 import type {
+  ColorMode,
   Connection,
   Edge,
   FinalConnectionState,
   Node,
 } from '@xyflow/react';
+import { useMantineColorScheme } from '@mantine/core';
 
 import '@xyflow/react/dist/style.css';
 
@@ -36,11 +38,19 @@ function getNextId() {
   return `${nodeId++}`;
 }
 
+function toReactFlowColorMode(scheme: string): ColorMode {
+  if (scheme === 'auto') return 'system';
+  if (scheme === 'dark') return 'dark';
+  return 'light';
+}
+
 function FlowCanvasInner() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const { screenToFlowPosition } = useReactFlow();
+  const { colorScheme } = useMantineColorScheme();
+  const colorMode = toReactFlowColorMode(colorScheme);
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((prev) => addEdge(params, prev)),
@@ -87,6 +97,7 @@ function FlowCanvasInner() {
         fitView
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
+        colorMode={colorMode}
       >
         <Background />
       </ReactFlow>

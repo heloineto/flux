@@ -16,7 +16,7 @@ export function FlowPage({ flowId: _flowId }: Props) {
   const [zoom, setZoom] = useState(100);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#FAFAFA]">
+    <div className="relative h-screen w-full overflow-hidden">
       <FlowCanvas />
       <BoardHeaderLeft />
       <BoardHeaderRight />
