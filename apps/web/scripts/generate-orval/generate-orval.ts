@@ -2,6 +2,8 @@ import type { Options } from 'orval';
 import { defineConfig, generate } from 'orval';
 import { rm } from 'node:fs/promises';
 
+const BASE_DIR = 'src/shared/api';
+
 const config = defineConfig({
   'react-query': {
     input: {
@@ -11,15 +13,15 @@ const config = defineConfig({
       prettier: true,
       mode: 'tags-split',
       httpClient: 'axios',
-      target: 'lib/orval/clients/react-query',
+      target: `${BASE_DIR}/orval/react-query`,
       schemas: {
         type: 'typescript',
-        path: 'lib/orval/models',
+        path: `${BASE_DIR}/orval/models`,
       },
       client: 'react-query',
       override: {
         mutator: {
-          path: 'lib/api-instance.ts',
+          path: `${BASE_DIR}/api-instance.ts`,
           name: 'apiInstance',
         },
         query: {
@@ -37,15 +39,15 @@ const config = defineConfig({
       prettier: true,
       mode: 'tags-split',
       httpClient: 'axios',
-      target: 'lib/orval/clients/axios',
+      target: `${BASE_DIR}/orval/axios`,
       schemas: {
         type: 'typescript',
-        path: 'lib/orval/models',
+        path: `${BASE_DIR}/orval/models`,
       },
       client: 'axios',
       override: {
         mutator: {
-          path: 'lib/api-instance.ts',
+          path: `${BASE_DIR}/api-instance.ts`,
           name: 'apiInstance',
         },
       },
