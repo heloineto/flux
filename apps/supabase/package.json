@@ -1,5 +1,5 @@
 {
-  "name": "supabase",
+  "name": "flux-supabase",
   "scripts": {
     "dev": "supabase start",
     "clean": "rimraf node_modules"
