@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev -p 7051",
+    "dev": "wait-on http-get://localhost:7100/openapi/json && next dev -p 7051",
     "lint": "eslint",
     "format": "prettier --write .",
     "check-types": "tsc --noEmit",
@@ -15,10 +15,13 @@
   "dependencies": {
     "fumadocs-core": "latest",
     "fumadocs-mdx": "latest",
+    "fumadocs-openapi": "10.3.18",
     "fumadocs-ui": "latest",
     "next": "^16.1.6",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "shiki": "4.0.2",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.1.6",
@@ -36,7 +39,8 @@
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.4"
   },
   "cspell": {
     "language": "en",
@@ -53,10 +57,13 @@
       "mdx",
       "nextjs",
       "orama",
+      "rehydratable",
+      "shiki",
       "supabase",
       "tailwindcss",
       "turborepo",
       "vercel",
+      "waiton",
       "xstate"
     ]
   }

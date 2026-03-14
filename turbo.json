@@ -20,6 +20,9 @@
     "lint": {
       "dependsOn": ["^build", "^lint"]
     },
+    "format": {
+      "dependsOn": []
+    },
     "check-types": {
       "dependsOn": ["^build", "^check-types"]
     },

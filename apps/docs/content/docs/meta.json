@@ -1,4 +1,4 @@
 {
   "title": "Flux Docs",
-  "pages": ["index", "glossary", "technologies"]
+  "pages": ["index", "glossary", "technologies", "..."]
 }
