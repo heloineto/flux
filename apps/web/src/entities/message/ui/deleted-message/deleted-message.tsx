@@ -1,4 +1,4 @@
-import { Prohibit } from '@phosphor-icons/react/dist/ssr';
+import { ProhibitIcon } from '@phosphor-icons/react/dist/ssr';
 import { MessageBubble } from '../message-bubble';
 import { MessageMeta } from '../message-meta';
 import type { MessageProps } from '../../model/types';
@@ -18,7 +18,7 @@ export function DeletedMessage({
       direction={direction}
       position={position}
     >
-      <Prohibit className={classes.icon} />
+      <ProhibitIcon className={classes.icon} />
       <span className={classes.text}>Eliminaste este mensaje</span>
       <MessageMetaPlaceholder time={time} />
       <MessageMeta className={classes.meta} time={time} />

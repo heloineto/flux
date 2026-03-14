@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, CheckCircle, Copy } from '@phosphor-icons/react';
+import {
+  ArrowRightIcon,
+  CheckCircleIcon,
+  CopyIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { GITHUB_URL } from '@/shared/config/constants';
 
@@ -61,7 +65,7 @@ export function FinalCTASection() {
               className="inline-flex h-16 items-center gap-2 rounded-2xl bg-indigo-600 px-12 text-lg font-semibold text-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-600/20 active:scale-95"
             >
               Get Started Now
-              <ArrowRight className="ml-2 size-4" />
+              <ArrowRightIcon className="ml-2 size-4" />
             </Link>
           </div>
 
@@ -116,9 +120,9 @@ export function FinalCTASection() {
                   className="flex items-center gap-2 font-mono text-xs text-white/40 transition-colors hover:text-white"
                 >
                   {copied ? (
-                    <CheckCircle className="size-4 text-green-400" />
+                    <CheckCircleIcon className="size-4 text-green-400" />
                   ) : (
-                    <Copy className="size-4" />
+                    <CopyIcon className="size-4" />
                   )}
                   {copied ? 'Copied!' : 'Copy'}
                 </button>

@@ -1,5 +1,8 @@
 import type { JSX } from 'react';
-import { PhoneIncoming, PhoneOutgoing } from '@phosphor-icons/react/dist/ssr';
+import {
+  PhoneIncomingIcon,
+  PhoneOutgoingIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import { MessageBubble } from '../message-bubble';
 import { MessageMeta } from '../message-meta';
 import type { MessageDirection, MessageProps } from '../../model/types';
@@ -31,8 +34,8 @@ function renderCallIcon(
     return <VideoOutgoing weight="fill" />;
   if (type === 'video' && direction === 'received')
     return <VideoIncoming weight="fill" />;
-  if (direction === 'sent') return <PhoneOutgoing weight="fill" />;
-  return <PhoneIncoming weight="fill" />;
+  if (direction === 'sent') return <PhoneOutgoingIcon weight="fill" />;
+  return <PhoneIncomingIcon weight="fill" />;
 }
 
 const getCallLabel = (type: 'video' | 'audio', participants?: number) => {

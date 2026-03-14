@@ -1,10 +1,10 @@
 'use client';
 
 import {
-  Gauge,
-  Shuffle,
-  Terminal,
-  Users,
+  GaugeIcon,
+  ShuffleIcon,
+  TerminalIcon,
+  UsersIcon,
 } from '@phosphor-icons/react/dist/ssr';
 
 export function UseCasesSection() {
@@ -19,7 +19,7 @@ export function UseCasesSection() {
       <div className="relative z-10 container mx-auto px-6">
         <div className="mx-auto mb-24 flex max-w-4xl flex-col items-center text-center">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-white/60 uppercase">
-            <Shuffle className="size-3" />
+            <ShuffleIcon className="size-3" />
             <span>Use cases</span>
           </div>
           <h2 className="mb-8 text-5xl leading-[0.9] font-bold tracking-tighter text-white md:text-7xl">
@@ -37,7 +37,7 @@ export function UseCasesSection() {
         <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3">
           <UseCaseCard
             color="cyan"
-            icon={<Terminal className="size-6" />}
+            icon={<TerminalIcon className="size-6" />}
             title="Developers"
             subtitle="Code-first flows"
             description="Define agents in TypeScript with full type safety. Use the CLI to scaffold, version with git, and deploy to any environment. The visual editor is always in sync."
@@ -46,7 +46,7 @@ export function UseCasesSection() {
 
           <UseCaseCard
             color="violet"
-            icon={<Users className="size-6" />}
+            icon={<UsersIcon className="size-6" />}
             title="Non-technical teams"
             subtitle="The visual layer"
             description="Product managers, customer success, and ops can edit messages, configure business hours, and adjust flows - all without touching code."
@@ -55,7 +55,7 @@ export function UseCasesSection() {
 
           <UseCaseCard
             color="amber"
-            icon={<Gauge className="size-6" />}
+            icon={<GaugeIcon className="size-6" />}
             title="Operations"
             subtitle="Real-time dashboard"
             description="View conversations, manage contacts in bulk, export to PDF, trigger handoffs, and monitor agent performance - all from a single admin dashboard."

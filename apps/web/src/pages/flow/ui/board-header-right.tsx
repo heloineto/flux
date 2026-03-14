@@ -1,6 +1,6 @@
 'use client';
 
-import { SquaresFourIcon, TimerIcon } from '@phosphor-icons/react';
+import { SquaresFourIcon, TimerIcon } from '@phosphor-icons/react/dist/ssr';
 
 export function BoardHeaderRight() {
   return (

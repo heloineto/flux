@@ -46,6 +46,7 @@ const eslintConfig = defineConfig([
           paths: [
             {
               name: '@phosphor-icons/react',
+              allowTypeImports: true,
               message:
                 "Use '@phosphor-icons/react/dist/ssr' instead. E.g. import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr'",
             },

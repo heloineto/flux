@@ -12,7 +12,7 @@ import {
   SquaresFourIcon,
   TableIcon,
   TextTIcon,
-} from '@phosphor-icons/react';
+} from '@phosphor-icons/react/dist/ssr';
 import { cn } from '@/shared/lib/utils';
 
 function MarkerIcon({ className }: { className?: string }) {

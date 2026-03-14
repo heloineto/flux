@@ -1,6 +1,11 @@
 'use client';
 
-import { ArrowRight, Check, Code, Heart } from '@phosphor-icons/react';
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  CodeIcon,
+  HeartIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
 const FEATURES = [
@@ -53,7 +58,7 @@ export function PricingSection() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-indigo-600"
             >
-              <Heart weight="fill" className="size-4 text-pink-500" />
+              <HeartIcon weight="fill" className="size-4 text-pink-500" />
               Support Flux development on GitHub
             </a>
           </div>
@@ -70,7 +75,7 @@ function FreePlanCard() {
 
       <div className="relative z-10">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-black px-3 py-1 text-[11px] font-bold tracking-wider text-white uppercase ring-1 ring-white/20">
-          <Code className="size-3" />
+          <CodeIcon className="size-3" />
           MIT License
         </div>
         <h3 className="mb-2 text-2xl font-bold text-gray-900">Free</h3>
@@ -96,7 +101,7 @@ function FreePlanCard() {
           className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
         >
           <span>Get Started</span>
-          <ArrowRight className="size-4 opacity-50 transition-transform group-hover:translate-x-1" />
+          <ArrowRightIcon className="size-4 opacity-50 transition-transform group-hover:translate-x-1" />
         </Link>
         <p className="mt-4 text-center text-[10px] text-gray-400">
           No credit card required
@@ -116,7 +121,7 @@ function FeatureListCard() {
         {FEATURES.map((feature) => (
           <li key={feature} className="group flex items-center gap-3">
             <div className="flex size-5 shrink-0 items-center justify-center rounded-full border border-green-100 bg-green-50 shadow-sm transition-transform group-hover:scale-110">
-              <Check className="size-3 text-green-600" weight="bold" />
+              <CheckIcon className="size-3 text-green-600" weight="bold" />
             </div>
             <span className="text-[15px] font-medium text-gray-500 transition-colors group-hover:text-indigo-600">
               {feature}

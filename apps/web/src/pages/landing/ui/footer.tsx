@@ -1,5 +1,5 @@
 import { GITHUB_URL } from '@/shared/config/constants';
-import { GithubLogo } from '@phosphor-icons/react/dist/ssr';
+import { GithubLogoIcon } from '@phosphor-icons/react/dist/ssr';
 
 export function Footer() {
   return (
@@ -46,7 +46,7 @@ export function Footer() {
             className="group text-gray-400 transition-colors hover:text-indigo-600"
             aria-label="GitHub"
           >
-            <GithubLogo
+            <GithubLogoIcon
               weight="fill"
               className="size-4 transition-transform group-hover:scale-110"
             />

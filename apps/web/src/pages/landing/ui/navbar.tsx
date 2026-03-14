@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import {
-  CaretRight,
-  GithubLogo,
-  List,
-  MagicWand,
-  X,
-} from '@phosphor-icons/react';
+  CaretRightIcon,
+  GithubLogoIcon,
+  ListIcon,
+  MagicWandIcon,
+  XIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { GITHUB_URL } from '@/shared/config/constants';
 
@@ -113,7 +113,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               rel="noreferrer"
               className="hidden h-9 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 text-sm font-medium text-gray-700 transition-all hover:bg-gray-50 md:flex"
             >
-              <GithubLogo weight="fill" className="size-4" />
+              <GithubLogoIcon weight="fill" className="size-4" />
               <span>GitHub</span>
             </a>
 
@@ -130,9 +130,9 @@ export function Navbar({ isScrolled }: NavbarProps) {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="size-5" />
+                <XIcon className="size-5" />
               ) : (
-                <List className="size-5" />
+                <ListIcon className="size-5" />
               )}
             </button>
           </div>
@@ -155,7 +155,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               {item.name}
-              <CaretRight className="size-6 -translate-x-4 text-gray-400 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+              <CaretRightIcon className="size-6 -translate-x-4 text-gray-400 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
             </a>
           ))}
           <div className="mt-12 space-y-4">
@@ -165,7 +165,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>Get Started</span>
-              <MagicWand className="size-4" />
+              <MagicWandIcon className="size-4" />
             </Link>
             <a
               href={GITHUB_URL}
@@ -173,7 +173,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
               rel="noreferrer"
               className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 text-base font-semibold text-gray-700"
             >
-              <GithubLogo weight="fill" className="size-5" />
+              <GithubLogoIcon weight="fill" className="size-5" />
               View on GitHub
             </a>
           </div>

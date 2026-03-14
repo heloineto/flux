@@ -1,6 +1,10 @@
 'use client';
 
-import { MinusIcon, PlusIcon, QuestionIcon } from '@phosphor-icons/react';
+import {
+  MinusIcon,
+  PlusIcon,
+  QuestionIcon,
+} from '@phosphor-icons/react/dist/ssr';
 
 interface ZoomControlsProps {
   zoom: number;

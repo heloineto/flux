@@ -1,7 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Check, Copy, GitBranch, Play, Terminal } from '@phosphor-icons/react';
+import {
+  CheckIcon,
+  CopyIcon,
+  GitBranchIcon,
+  PlayIcon,
+  TerminalIcon,
+} from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
 const ROTATING_WORDS = ['designs', 'deploys', 'manages', 'ships'];
@@ -36,21 +42,21 @@ function CopyCommand() {
 
   return (
     <div
-      className="group cursor-pointer w-fit max-w-full mx-auto"
+      className="group mx-auto w-fit max-w-full cursor-pointer"
       onClick={handleCopy}
     >
-      <div className="relative flex items-center justify-between md:justify-center gap-2 px-4 py-3 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200/60 hover:border-indigo-200 transition-all shadow-sm ring-1 ring-transparent hover:ring-indigo-100">
-        <span className="font-mono text-xs md:text-sm text-gray-500 select-all truncate">
+      <div className="relative flex items-center justify-between gap-2 rounded-xl border border-gray-200/60 bg-white/60 px-4 py-3 shadow-sm ring-1 ring-transparent backdrop-blur-sm transition-all hover:border-indigo-200 hover:ring-indigo-100 md:justify-center">
+        <span className="truncate font-mono text-xs text-gray-500 select-all md:text-sm">
           npm create flux-app
         </span>
-        <div className="hidden md:block w-px h-4 bg-gray-300/40"></div>
+        <div className="hidden h-4 w-px bg-gray-300/40 md:block"></div>
         {copied ? (
-          <Check className="size-3.5 text-green-500 shrink-0" />
+          <CheckIcon className="size-3.5 shrink-0 text-green-500" />
         ) : (
-          <Copy className="size-3.5 text-gray-400 hover:text-indigo-600 transition-colors shrink-0" />
+          <CopyIcon className="size-3.5 shrink-0 text-gray-400 transition-colors hover:text-indigo-600" />
         )}
       </div>
-      <div className="mt-4 text-[10px] font-mono text-gray-400 uppercase tracking-widest opacity-60 flex items-center justify-center gap-3">
+      <div className="mt-4 flex items-center justify-center gap-3 font-mono text-[10px] tracking-widest text-gray-400 uppercase opacity-60">
         <span>MIT License</span>
         <span className="size-1 rounded-full bg-gray-400/30"></span>
         <span>Multi-channel</span>
@@ -65,24 +71,24 @@ export function HeroSection() {
   const { word, isExiting } = useRotatingWord(ROTATING_WORDS);
 
   return (
-    <section className="relative pt-24 pb-12 md:pt-36 md:pb-24 overflow-hidden select-none bg-gray-50">
-      <div className="absolute inset-0 pointer-events-none mask-[linear-gradient(to_bottom,black_0%,black_20%,rgba(0,0,0,0.8)_40%,rgba(0,0,0,0.4)_70%,transparent_100%)]">
+    <section className="relative overflow-hidden bg-gray-50 pt-24 pb-12 select-none md:pt-36 md:pb-24">
+      <div className="pointer-events-none absolute inset-0 mask-[linear-gradient(to_bottom,black_0%,black_20%,rgba(0,0,0,0.8)_40%,rgba(0,0,0,0.4)_70%,transparent_100%)]">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[40px_40px]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808004_1px,transparent_1px),linear-gradient(to_bottom,#80808004_1px,transparent_1px)] bg-size-[10px_10px]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(#8080800C_1px,transparent_1px)] bg-size-[40px_40px] bg-position-[center_center]"></div>
-        <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-indigo-500/1.5 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-500/1.5 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[-20%] left-[-10%] h-[70vw] w-[70vw] rounded-full bg-indigo-500/1.5 blur-[120px]"></div>
+        <div className="absolute right-[-10%] bottom-[-10%] h-[60vw] w-[60vw] rounded-full bg-purple-500/1.5 blur-[120px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center">
-        <div className="animate-[slide-up_0.6s_ease-out_forwards] opacity-0 [animation-delay:0ms] inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-600/5 border border-indigo-600/10 text-indigo-600/60 mb-6 font-mono text-[10px] uppercase tracking-widest font-bold ring-1 ring-indigo-600/5">
-          <Terminal className="size-3" />
+      <div className="relative z-10 container mx-auto flex flex-col items-center px-4 text-center md:px-6">
+        <div className="mb-6 inline-flex animate-[slide-up_0.6s_ease-out_forwards] items-center gap-2 rounded-full border border-indigo-600/10 bg-indigo-600/5 px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-indigo-600/60 uppercase opacity-0 ring-1 ring-indigo-600/5 [animation-delay:0ms]">
+          <TerminalIcon className="size-3" />
           <span>Now in beta</span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl md:text-[88px] font-bold tracking-[-0.04em] text-gray-900 mb-6 md:mb-8 max-w-5xl mx-auto leading-[1.1] text-balance">
+        <h1 className="mx-auto mb-6 max-w-5xl text-5xl leading-[1.1] font-bold tracking-[-0.04em] text-balance text-gray-900 sm:text-6xl md:mb-8 md:text-[88px]">
           Your team{' '}
-          <span className="font-serif italic font-normal text-indigo-600 inline-flex items-center gap-[0.2em]">
+          <span className="inline-flex items-center gap-[0.2em] font-serif font-normal text-indigo-600 italic">
             builds,{' '}
             <span
               key={word}
@@ -98,25 +104,25 @@ export function HeroSection() {
           AI agents
         </h1>
 
-        <p className="text-lg/relaxed md:text-xl text-gray-500 mb-8 md:mb-10 max-w-2xl mx-auto text-balance font-medium tracking-tight px-4">
+        <p className="mx-auto mb-8 max-w-2xl px-4 text-lg/relaxed font-medium tracking-tight text-balance text-gray-500 md:mb-10 md:text-xl">
           Design, deploy, and manage conversational AI agents across WhatsApp,
           Telegram, Instagram, and more - with a visual workflow editor anyone
           on your team can use.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-12 px-6">
+        <div className="mb-12 flex w-full flex-col items-center justify-center gap-4 px-6 sm:w-auto sm:flex-row">
           <Link
             href="/login"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 h-14 px-10 text-[15px] font-semibold text-white bg-indigo-600 rounded-2xl hover:bg-indigo-700 hover:-translate-y-0.5 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-10 text-[15px] font-semibold text-white shadow-lg shadow-indigo-600/20 transition-all hover:-translate-y-0.5 hover:bg-indigo-700 active:scale-95 sm:w-auto"
           >
-            <Play weight="fill" className="size-4" />
+            <PlayIcon weight="fill" className="size-4" />
             Get Started Free
           </Link>
           <a
             href="/docs"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 h-14 px-10 text-[15px] font-semibold text-gray-700 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 hover:-translate-y-0.5 transition-all shadow-sm active:scale-95"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-10 text-[15px] font-semibold text-gray-700 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-gray-50 active:scale-95 sm:w-auto"
           >
-            <GitBranch className="size-4" />
+            <GitBranchIcon className="size-4" />
             View Docs
           </a>
         </div>

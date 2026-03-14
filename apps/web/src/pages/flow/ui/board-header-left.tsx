@@ -1,6 +1,6 @@
 'use client';
 
-import { CopyIcon } from '@phosphor-icons/react';
+import { CopyIcon } from '@phosphor-icons/react/dist/ssr';
 
 export function BoardHeaderLeft() {
   return (
