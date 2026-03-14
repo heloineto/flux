@@ -119,8 +119,8 @@ function ToolButton({
       className={cn(
         'relative flex size-9 items-center justify-center rounded-lg transition-colors',
         activeTool === toolId
-          ? 'bg-violet-100 text-violet-600'
-          : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+          ? 'bg-violet-100 text-violet-600 dark:bg-violet-900 dark:text-violet-300'
+          : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-dark-500 dark:hover:text-gray-100'
       )}
     >
       {children}
@@ -140,7 +140,7 @@ export function CanvasToolbar({
 }: CanvasToolbarProps) {
   return (
     <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2">
-      <div className="flex items-center gap-1 rounded-xl bg-white p-2 shadow-lg">
+      <div className="flex items-center gap-1 rounded-xl bg-white p-2 shadow-lg dark:bg-dark-700">
         {tools.map((tool) => {
           if (tool.type === 'marker') {
             return (
@@ -150,7 +150,7 @@ export function CanvasToolbar({
                 activeTool={activeTool}
                 onSelect={onToolSelect}
               >
-                <MarkerIcon className="size-5 text-gray-900" />
+                <MarkerIcon className="size-5" />
               </ToolButton>
             );
           }

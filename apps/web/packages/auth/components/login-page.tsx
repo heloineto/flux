@@ -72,7 +72,7 @@ export function LoginPage({
           <div className="mt-10 mb-8">
             <form onSubmit={handleLogin}>
               <TextInput
-                label="Email"
+                label="E-mail"
                 withAsterisk={false}
                 placeholder="email@example.com"
                 size="md"

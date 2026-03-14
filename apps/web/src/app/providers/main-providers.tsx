@@ -2,10 +2,10 @@
 
 import type { ReactNode } from 'react';
 import { createClient } from '@/shared/api/supabase/client';
-import { useSessionQuery, useUserQuery } from '@/shared/auth';
-import { AuthProvider } from '@/shared/auth/context';
 import { AsideProvider, SidebarProvider } from '@packages/app-shell';
 import { useCurrentRoute } from '@/shared/config';
+import { useSessionQuery, useUserQuery } from '@packages/auth';
+import { AuthProvider } from '@/shared/auth';
 
 export function MainProviders({ children }: { children: ReactNode }) {
   const supabase = createClient();

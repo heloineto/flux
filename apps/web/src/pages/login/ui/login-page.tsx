@@ -1,4 +1,4 @@
-import { LoginPage as SharedLoginPage } from '@/shared/auth';
+import { LoginPage as SharedLoginPage } from '@packages/auth';
 import { DEFAULT_ROUTE } from '@/shared/config/constants';
 
 export function LoginPage() {

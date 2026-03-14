@@ -54,8 +54,7 @@ const MOCK_FLOWS: Flow[] = [
 
 export function FlowsPage() {
   return (
-    <div className="flex flex-col gap-8 p-5">
-      <h2 className="text-2xl font-bold">Flows</h2>
+    <div className="flex w-full flex-col p-5">
       <FlowsGrid flows={MOCK_FLOWS} />
     </div>
   );
