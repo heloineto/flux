@@ -6,10 +6,6 @@ const config = defineConfig({
   'react-query': {
     input: {
       target: `${process.env.NEXT_PUBLIC_API_URL}/openapi/json`,
-      filters: {
-        mode: 'include',
-        tags: ['Emendas estaduais', 'Apoiadores'],
-      },
     },
     output: {
       prettier: true,
@@ -36,10 +32,6 @@ const config = defineConfig({
   axios: {
     input: {
       target: `${process.env.NEXT_PUBLIC_API_URL}/openapi/json`,
-      filters: {
-        mode: 'include',
-        tags: ['Emendas estaduais', 'Apoiadores'],
-      },
     },
     output: {
       prettier: true,
