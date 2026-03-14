@@ -10,3 +10,5 @@ export const PUBLIC_ROUTES = [LOGIN_ROUTE, LANDING_PAGE_ROUTE];
 export const DEFAULT_ROUTE = '/flows';
 
 export const HEADER_HEIGHT = 48;
+
+export const GITHUB_URL = 'https://github.com/heloineto/flux';

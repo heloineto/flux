@@ -35,7 +35,20 @@ const eslintConfig = defineConfig([
       'no-restricted-imports': [
         'error',
         {
+          patterns: [
+            {
+              regex: '^@phosphor-icons/react/dist/ssr$',
+              allowImportNamePattern: 'Icon$',
+              message:
+                "Phosphor icon imports must end with 'Icon'. E.g. ArrowRightIcon instead of ArrowRight.",
+            },
+          ],
           paths: [
+            {
+              name: '@phosphor-icons/react',
+              message:
+                "Use '@phosphor-icons/react/dist/ssr' instead. E.g. import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr'",
+            },
             {
               name: '@mantine/core',
               importNames: [

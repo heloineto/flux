@@ -21,6 +21,8 @@ import { useMantineColorScheme } from '@mantine/core';
 
 import '@xyflow/react/dist/style.css';
 
+const proOptions = { hideAttribution: true };
+
 const initialNodes: Node[] = [
   {
     id: '0',
@@ -98,6 +100,7 @@ function FlowCanvasInner() {
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
         colorMode={colorMode}
+        proOptions={proOptions}
       >
         <Background />
       </ReactFlow>
