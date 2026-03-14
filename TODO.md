@@ -9,6 +9,7 @@
 - [ ] Implement comments on the flow canvas
 - [ ] Implement server Side Image Creation
 - [ ] Actually implement pan and select canvas mode (react flow calls it toggle interactivity)
+- [ ] Add code duplication detection
 
 ## Medium
 
@@ -20,4 +21,4 @@
 - [ ] [API] Implement deployment
 - [ ] [WEB] Implement environments in deployment (development, production, etc.)
 - [ ] Implement versioning and branching (git-like)
-- [ ] Add realtime collaboration features (cursor, cursor, etc.)
+- [ ] Add realtime collaboration features
