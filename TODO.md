@@ -14,3 +14,4 @@
 - [ ] [API] Implement deployment
 - [ ] [WEB] Implement environments in deployment (development, production, etc.)
 - [ ] [ALL] Implement versioning and branching (git-like)
+- [ ] [ALL] Add realtime collaboration features (cursor, cursor, etc.)

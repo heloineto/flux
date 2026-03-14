@@ -17,5 +17,5 @@ export const theme = createTheme({
     },
   },
   defaultRadius: 'md',
-  primaryColor: 'blue',
+  primaryColor: 'cyan',
 });

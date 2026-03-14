@@ -1,19 +1,34 @@
 'use client';
 
+import { ActionIcon } from '@mantine/core';
 import { HighlighterIcon } from './highlighter-icon';
 import { MarkerIcon } from './marker-icon';
 import { ToolButton } from './tool-button';
 import { tools } from './tools';
+import {
+  HandGrabbingIcon,
+  NavigationArrowIcon,
+} from '@phosphor-icons/react/dist/ssr';
 
 interface CanvasToolbarProps {
   activeTool: string;
   onToolSelect: (id: string) => void;
 }
 
-export function CanvasToolbar({ activeTool, onToolSelect }: CanvasToolbarProps) {
+export function CanvasToolbar({
+  activeTool,
+  onToolSelect,
+}: CanvasToolbarProps) {
   return (
     <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2">
-      <div className="dark:bg-dark-700 flex items-center gap-1 rounded-xl bg-white p-2 shadow-lg">
+      <div className="dark:bg-dark-700 flex items-center gap-1 rounded-lg border border-gray-100 bg-white p-2 shadow-sm">
+        <ActionIcon variant="light" size="lg">
+          <NavigationArrowIcon className="size-5" />
+        </ActionIcon>
+        <ActionIcon variant="transparent" size="lg">
+          <HandGrabbingIcon className="size-5" />
+        </ActionIcon>
+
         {tools.map((tool) => {
           if (tool.type === 'marker') {
             return (
