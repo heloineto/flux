@@ -11,13 +11,14 @@
     "test:unit:watch": "vitest",
     "test:unit:coverage": "vitest run --coverage",
     "test:unit:debug": "vitest --inspect-brk --inspect --logHeapUsage --threads=false",
-    "test:e2e": "vitest run --config ./test/vitest.config.e2e.ts",
+    "test:e2e": "vitest run --config ./e2e/vitest.config.e2e.ts",
     "test": "bun run test:unit && bun run test:e2e",
     "check-types": "tsc --noEmit",
     "check-unused": "knip",
     "check-spelling": "cspell .",
     "check": "bun run check-types && bun run lint && bun run format && bun run check-spelling && bun run test",
-    "get-jwt": "bun run scripts/get-jwt/index.ts"
+    "get-jwt": "bun run scripts/get-jwt/index.ts",
+    "clean": "rimraf node_modules dist"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.14",
