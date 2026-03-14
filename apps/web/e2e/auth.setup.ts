@@ -16,8 +16,8 @@ setup('authenticate', async ({ page }) => {
     .parse(process.env.E2E_TEST_PASSWORD);
 
   await page.getByRole('textbox', { name: 'E-mail' }).fill(email);
-  await page.getByRole('textbox', { name: 'Senha' }).fill(password);
-  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill(password);
+  await page.getByRole('button', { name: 'Sign in' }).click();
 
   await page.waitForURL('**/login');
 
