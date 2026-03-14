@@ -2,7 +2,7 @@
 
 import { SquaresFourIcon, TimerIcon } from '@phosphor-icons/react/dist/ssr';
 
-export function BoardHeaderRight() {
+export function RightPanelIsland() {
   return (
     <div className="absolute top-4 right-4 z-10">
       <div className="dark:bg-dark-700 flex items-center gap-3 rounded-lg bg-white px-3 py-2 shadow-md">

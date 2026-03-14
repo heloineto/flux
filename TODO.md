@@ -5,8 +5,12 @@
 - [ ] [ALL] Fix `bun run check-unused` on all projects
 - [ ] [WEB] Corrigir `bun run check-fsd`
 - [ ] [WEB] Add favicon
+- [ ] [] Implement triggers (gatilhos) Decide whether to call it evidence, hooks, or triggers. They will be the starting point of the bot.
+- [ ] [] Implement
 
 ## Medium
+
+- [ ] [ALL] Implement multiple pages with a clear API (like a programming function)
 
 ## Hard
 

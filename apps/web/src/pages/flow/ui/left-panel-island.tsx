@@ -2,7 +2,7 @@
 
 import { CopyIcon } from '@phosphor-icons/react/dist/ssr';
 
-export function BoardHeaderLeft() {
+export function LeftPanelIsland() {
   return (
     <div className="absolute top-4 left-4 z-10">
       <div className="dark:bg-dark-700 flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-md">
