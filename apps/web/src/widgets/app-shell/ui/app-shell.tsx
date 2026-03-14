@@ -18,6 +18,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <MantineAppShell
+      layout="alt"
       header={{ height: HEADER_HEIGHT }}
       navbar={{
         width: SIDEBAR_EXPANDED_WIDTH,

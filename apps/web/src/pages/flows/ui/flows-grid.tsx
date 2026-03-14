@@ -1,6 +1,5 @@
 'use client';
 
-import { SimpleGrid, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { EmptyState } from '@/shared/ui/states';
 import { CreateFlowCard } from './create-flow-card';
@@ -30,7 +29,7 @@ export function FlowsGrid({ flows }: FlowsGridProps) {
   const hasFilters = searchQuery.length > 0;
 
   return (
-    <Stack gap="md">
+    <div className="flex flex-col gap-4">
       <FlowsSearch onSearch={setSearchQuery} />
       {filtered.length === 0 ? (
         <EmptyState
@@ -43,7 +42,7 @@ export function FlowsGrid({ flows }: FlowsGridProps) {
           }
         />
       ) : (
-        <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }}>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((flow) => (
             <FlowCard
               id={flow.id}
@@ -53,8 +52,8 @@ export function FlowsGrid({ flows }: FlowsGridProps) {
             />
           ))}
           <CreateFlowCard />
-        </SimpleGrid>
+        </div>
       )}
-    </Stack>
+    </div>
   );
 }

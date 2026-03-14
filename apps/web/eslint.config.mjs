@@ -31,6 +31,26 @@ const eslintConfig = defineConfig([
     rules: {
       '@next/next/no-img-element': 'off',
       'no-console': ['error', { allow: ['warn', 'error'] }],
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@mantine/core',
+              importNames: [
+                'Stack',
+                'Box',
+                'Flex',
+                'SimpleGrid',
+                'Text',
+                'Title',
+              ],
+              message:
+                'Use native html elements with Tailwind CSS classes instead.',
+            },
+          ],
+        },
+      ],
     },
   },
   {

@@ -15,3 +15,14 @@
     @apply bg-body text-text;
   }
 }
+
+@theme {
+  --color-slate-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-stone-*: initial;
+  --color-taupe-*: initial;
+  --color-mauve-*: initial;
+  --color-mist-*: initial;
+  --color-olive-*: initial;
+}

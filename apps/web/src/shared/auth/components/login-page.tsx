@@ -4,7 +4,7 @@ import { createClient } from '@/shared/api/supabase/client';
 import { useRouter } from 'next/navigation';
 import type { ComponentProps, FormEvent, ReactNode } from 'react';
 import { useState } from 'react';
-import { Button, PasswordInput, TextInput, Title } from '@mantine/core';
+import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 
@@ -60,13 +60,9 @@ export function LoginPage({
           <div>
             {logo}
 
-            <Title
-              order={2}
-              mt="lg"
-              className="text-2xl/9 font-bold tracking-tight"
-            >
+            <h2 className="mt-5 text-2xl/9 font-bold tracking-tight">
               {title}
-            </Title>
+            </h2>
           </div>
 
           <div className="mt-10 mb-8">

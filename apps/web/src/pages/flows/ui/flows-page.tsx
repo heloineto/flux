@@ -1,4 +1,3 @@
-import { Stack, Title } from '@mantine/core';
 import { FlowsGrid } from './flows-grid';
 
 type Flow = {
@@ -55,9 +54,9 @@ const MOCK_FLOWS: Flow[] = [
 
 export function FlowsPage() {
   return (
-    <Stack gap="xl" p="lg">
-      <Title order={2}>Flows</Title>
+    <div className="flex flex-col gap-8 p-5">
+      <h2 className="text-2xl font-bold">Flows</h2>
       <FlowsGrid flows={MOCK_FLOWS} />
-    </Stack>
+    </div>
   );
 }

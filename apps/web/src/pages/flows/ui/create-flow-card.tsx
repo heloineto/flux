@@ -1,4 +1,4 @@
-import { Card, Stack, Text } from '@mantine/core';
+import { Card } from '@mantine/core';
 import { PlusIcon } from '@phosphor-icons/react/dist/ssr';
 
 export function CreateFlowCard() {
@@ -11,17 +11,10 @@ export function CreateFlowCard() {
         borderStyle: 'dashed',
       }}
     >
-      <Stack
-        align="center"
-        gap="xs"
-        justify="center"
-        style={{ height: '100%', minHeight: 80 }}
-      >
+      <div className="flex h-full min-h-[80px] flex-col items-center justify-center gap-2">
         <PlusIcon size={24} />
-        <Text fw={500} size="sm">
-          Create new flow
-        </Text>
-      </Stack>
+        <span className="text-sm font-medium">Create new flow</span>
+      </div>
     </Card>
   );
 }
