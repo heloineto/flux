@@ -9,7 +9,13 @@ import { TenantsModule } from '@/tenants/tenants.module';
 import { UsersModule } from '@/users/users.module';
 
 @Module({
-  imports: [CoreModule.forRoot(), IamModule, FlowsModule, UsersModule, TenantsModule],
+  imports: [
+    CoreModule.forRoot(),
+    IamModule,
+    FlowsModule,
+    UsersModule,
+    TenantsModule,
+  ],
   providers: [
     {
       provide: APP_PIPE,

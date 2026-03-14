@@ -26,7 +26,6 @@
     "@nestjs/platform-express": "^11.1.14",
     "@nestjs/swagger": "^11.2.6",
     "@nestjs/typeorm": "^11.0.0",
-    "@scalar/nestjs-api-reference": "^1.0.27",
     "@supabase/supabase-js": "^2.97.0",
     "lodash": "^4.17.23",
     "nestjs-zod": "^5.1.1",

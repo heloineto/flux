@@ -8,7 +8,7 @@ import { UserEntity } from '@/users/domain/user.entity';
 export class TypeOrmUserRepository extends UserRepository {
   constructor(
     @InjectRepository(UserEntity)
-    private readonly repo: Repository<UserEntity>,
+    private readonly repo: Repository<UserEntity>
   ) {
     super();
   }

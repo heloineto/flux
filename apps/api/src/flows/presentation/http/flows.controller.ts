@@ -44,7 +44,7 @@ export class FlowsController {
   @ZodSerializerDto(FlowResponseDto)
   async update(
     @Param('id') id: string,
-    @Body() dto: UpdateFlowDto,
+    @Body() dto: UpdateFlowDto
   ): Promise<FlowEntity> {
     const flow = await this.flowRepository.findById(id);
     if (!flow) throw new NotFoundException();

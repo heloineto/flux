@@ -10,7 +10,7 @@ import { FlowEntity } from '@/flows/domain/flow.entity';
 export class TypeOrmFlowRepository extends FlowRepository {
   constructor(
     @InjectRepository(FlowEntity)
-    private readonly repo: Repository<FlowEntity>,
+    private readonly repo: Repository<FlowEntity>
   ) {
     super();
   }

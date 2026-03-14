@@ -8,7 +8,7 @@ import { TenantEntity } from '@/tenants/domain/tenant.entity';
 export class TypeOrmTenantRepository extends TenantRepository {
   constructor(
     @InjectRepository(TenantEntity)
-    private readonly repo: Repository<TenantEntity>,
+    private readonly repo: Repository<TenantEntity>
   ) {
     super();
   }
