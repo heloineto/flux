@@ -29,15 +29,6 @@ export function LandingPage() {
         <UseCasesSection />
         <PricingSection />
         <FinalCTASection />
-        <div className="bg-indigo-600 py-2.5 text-center text-xs font-medium tracking-wide text-white">
-          Flux is now in public beta.{' '}
-          <a
-            href="/docs/changelog"
-            className="ml-1 cursor-pointer underline opacity-90 hover:opacity-100"
-          >
-            Check the changelog
-          </a>
-        </div>
       </main>
       <Footer />
     </div>
