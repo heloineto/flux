@@ -33,7 +33,9 @@ export function FlowCard({ id, name, updatedAt }: FlowCardProps) {
 
         <div className="min-w-0">
           <p className="truncate text-sm font-medium">{name}</p>
-          <p className="text-xs text-gray-500">{formatRelativeTime(updatedAt)}</p>
+          <p className="text-xs text-gray-500">
+            {formatRelativeTime(updatedAt)}
+          </p>
         </div>
       </div>
     </Card>
