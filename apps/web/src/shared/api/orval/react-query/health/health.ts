@@ -19,8 +19,8 @@ import type {
   UseQueryResult,
 } from '@tanstack/react-query';
 
-import { apiInstance } from '../../../../api-instance';
-import type { ErrorType } from '../../../../api-instance';
+import { apiInstance } from '../../../api-instance';
+import type { ErrorType } from '../../../api-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 

@@ -5,10 +5,10 @@
  * API para dados eleitorais e estatísticas de candidatos
  * OpenAPI spec version: 1.0
  */
-import type { CreateFlowDto, UpdateFlowDto } from '../../../models';
+import type { CreateFlowDto, UpdateFlowDto } from '../../models';
 
-import { apiInstance } from '../../../../api-instance';
-import type { BodyType } from '../../../../api-instance';
+import { apiInstance } from '../../../api-instance';
+import type { BodyType } from '../../../api-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 

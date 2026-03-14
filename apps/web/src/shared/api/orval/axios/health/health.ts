@@ -5,7 +5,7 @@
  * API para dados eleitorais e estatísticas de candidatos
  * OpenAPI spec version: 1.0
  */
-import { apiInstance } from '../../../../api-instance';
+import { apiInstance } from '../../../api-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
