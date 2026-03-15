@@ -4,7 +4,7 @@
   "scripts": {
     "prepare": "husky",
     "docker:up": "docker compose --env-file .env.development.local up -d",
-    "docker:down": "docker compose --env-file .env.development.local down",
+    "docker:down": "docker compose --env-file .env.development.local down && supabase stop --workdir ./apps",
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
@@ -74,7 +74,8 @@
       "rehydratable",
       "supabase",
       "syncpack",
-      "turborepo"
+      "turborepo",
+      "workdir"
     ]
   }
 }
